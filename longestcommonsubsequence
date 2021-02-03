@@ -24,6 +24,42 @@ int main()
                 }
             }
         }
+        string sp="";
+        int j=m,i=n;
+        while((i>0)&&(j>0))
+        {
+            if(max(dp[i-1][j],dp[i][j-1])==dp[i][j])
+            {
+                if(dp[i][j-1]>=dp[i-1][j])
+                {
+                    j--;
+                }
+                else{
+                    i--;
+                }
+            }
+            else{
+                sp+=s1[i-1];
+                i--;
+                j--;
+            }
+        }
+        int lp=sp.size();
+        for(int i=0;i<(lp/2);i++)
+        {
+            char st=sp[i];
+            sp[i]=sp[lp-i-1];
+            sp[lp-i-1]=st;
+        }
+        cout<<sp<<endl;
+        for(int i=1;i<n+1;i++)
+        {
+            for(int j=1;j<m+1;j++)
+            {
+                cout<<dp[i][j]<<" ";
+            }
+            cout<<endl;
+        }
         cout<<dp[n][m]<<endl;
     } 
     return 0;
