@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define M 1000000007
+int main() {
+    ll t;cin>>t;
+    while(t--)
+    {
+        ll n,m;cin>>n>>m;
+        if((n==0)||(m==0))
+        {
+            cout<<"1.000000"<<endl;
+            continue;
+        }
+        double pk=1.000000;
+        double cur=0.000000;
+        while(m>0)
+        {
+            double res=((double)(((double)n)/((double)(n+m))));
+            res*=pk;
+            cur+=res;
+            pk*=((double)(((double)m)/((double)(n+m))));
+            m--;
+            pk*=((double)(((double)m)/((double)(n+m))));
+            m--;
+        }
+        cout<<fixed<<setprecision(6)<<cur<<endl;
+    }
+    return 0;
+}
